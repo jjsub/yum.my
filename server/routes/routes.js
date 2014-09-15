@@ -6,7 +6,9 @@ var morgan         = require('morgan'),
     session        = require('express-session'),
     RedisStore     = require('connect-redis')(session),
     debug          = require('../lib/debug'),
-    home           = require('../controllers/home');
+    security       = require('../lib/security'),
+    home           = require('../controllers/home'),
+    users          =  require('../controller/users');
 
 module.exports = function(app, express){
   app.use(morgan('dev'));
@@ -16,9 +18,11 @@ module.exports = function(app, express){
   app.use(methodOverride());
   app.use(session({store:new RedisStore(), secret:'my super secret key', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
 
+  app.security(security.Authenticate);
   app.use(debug.info);
 
   app.get('/home', home.index);
+  app.post('/register', users.register);
 
   console.log('Express: Routes Loaded');
 };

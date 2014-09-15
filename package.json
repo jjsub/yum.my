@@ -1,17 +1,17 @@
 {
-  "name": "mean-template",
+  "name": "yum.my",
   "version": "0.0.0",
-  "description": "The MEAN Template",
+  "description": "bookMark page",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nss-cohort-2014-06-07/mean-template"
+    "url": ""
   },
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "Juan Job <jsamesub@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nss-cohort-2014-06-07/mean-template/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/nss-cohort-2014-06-07/mean-template",
+    "homepage": "",
   "dependencies": {
     "async": "^0.9.0",
     "bcrypt": "^0.8.0",
