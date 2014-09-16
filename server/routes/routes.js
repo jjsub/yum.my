@@ -8,7 +8,7 @@ var morgan         = require('morgan'),
     debug          = require('../lib/debug'),
     security       = require('../lib/security'),
     home           = require('../controllers/home'),
-    users          =  require('../controller/users');
+    users          =  require('../controllers/users');
 
 module.exports = function(app, express){
   app.use(morgan('dev'));
@@ -18,11 +18,12 @@ module.exports = function(app, express){
   app.use(methodOverride());
   app.use(session({store:new RedisStore(), secret:'my super secret key', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
 
-  app.security(security.Authenticate);
+  app.use(security.authenticate);
   app.use(debug.info);
 
   app.get('/home', home.index);
   app.post('/register', users.register);
+  app.delete('/logout', users.logout);
 
   console.log('Express: Routes Loaded');
 };

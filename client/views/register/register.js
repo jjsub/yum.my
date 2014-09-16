@@ -2,13 +2,13 @@
   'use strict';
 
   angular.module('yum.my')
-  .controller('RegisterCtrl', ['$scope','$location','User', function($scope, $location){
+  .controller('RegisterCtrl', ['$scope','$location','User', function($scope, $location, User){
     $scope.user = {};
 
 
     function success(response){
-     toastr.success('User successfuly register') ;
-     $location.path('/login');
+      toastr.success('User successfuly register') ;
+      $location.path('/login');
     }
 
     function failure(response){

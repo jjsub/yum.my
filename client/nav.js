@@ -1,16 +1,18 @@
-(function)(){
-
+(function(){
   'use strict';
 
   angular.module('yum.my')
-  .controller('NavCtrl', ['$scope', function($scope){
-    $scope.$on('authenticated', function(event, email){
-      console.log('insede nav ctrl, emial:', emial );
+  .controller('NavCtrl', ['$scope','$localForage', function($scope, $localForage){
+    $localForage.getItem('email').then(function(email){
+      $scope.email = email;
     });
 
+    $scope.$on('authenticated', function(event, email){
+      if(email === 'anonymous'){email = null;}
 
-
-
-
+      $localForage.setItem('email', email).them(function(){
+        $scope.email = email;
+      });
+    });
   }]);
 })();

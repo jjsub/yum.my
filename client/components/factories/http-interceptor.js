@@ -2,11 +2,10 @@
   'use strict';
 
   angular.module('yum.my')
-  .factory('HttpIntercerptor', ['$rootScope', function($rootScope){
+  .factory('HttpInterceptor', ['$rootScope', function($rootScope){
 
-    function responser(res){
-      var email = res.header('x-authenticated-user');
-
+    function response(res){
+      var email = res.headers('x-authenticated-user');
       if(email){
         $rootScope.$broadcast('authenticated', email);
       }
